@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ЛР №1 — Інтерполяція Лагранжа та МНК</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Апроксимація функцій: інтерполяція Лагранжа та МНК</h1>
+      <p>Лабораторна робота № 1, варіант 15</p>
+    </header>
+    <main>
+      <div class="tabs" id="tabs" role="tablist">
+        <button
+          role="tab"
+          id="tab-charts"
+          aria-controls="panel-charts"
+          aria-selected="true"
+          data-tab="charts"
+        >
+          Графіки
+        </button>
+        <button
+          role="tab"
+          id="tab-data"
+          aria-controls="panel-data"
+          aria-selected="false"
+          data-tab="data"
+        >
+          Метрики та точки
+        </button>
+      </div>
+
+      <div role="tabpanel" id="panel-charts" aria-labelledby="tab-charts">
+        <section class="controls" aria-label="Керування">
+          <div class="seg" id="sets" role="group" aria-label="Набір точок">
+            <button data-n="5">5 точок</button
+            ><button data-n="10">10 точок</button
+            ><button data-n="20">20 точок</button>
+          </div>
+          <div class="seg" id="modes" role="group" aria-label="Метод">
+            <button data-mode="interp">Інтерполяція</button
+            ><button data-mode="lsq">МНК</button
+            ><button data-mode="all">Усі</button>
+          </div>
+          <label
+            >Ступінь МНК m
+            <select id="deg">
+              <option>2</option>
+              <option selected>3</option>
+              <option>4</option>
+            </select>
+          </label>
+          <label><input type="checkbox" id="extra" /> Екстраполяція ±20%</label>
+          <button id="play" class="primary">Запустити анімацію</button>
+          <button id="reset">Скинути</button>
+        </section>
+
+        <div class="stage">
+          <canvas id="main" aria-label="Графік інтерполяції та МНК"></canvas>
+          <div class="tip" id="tip" hidden></div>
+        </div>
+        <p id="status" aria-live="polite">&nbsp;</p>
+
+        <h2>Залишки rᵢ = yᵢ − ŷᵢ</h2>
+        <div class="stage short">
+          <canvas id="res" aria-label="Діаграма залишків"></canvas>
+          <div class="tip" id="tip2" hidden></div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="panel-data" aria-labelledby="tab-data" hidden>
+        <h2>Метрики для наборів 5 / 10 / 20 точок</h2>
+        <div class="tw"><table id="metrics"></table></div>
+
+        <h2>Власні точки</h2>
+        <details open>
+          <summary>По одній парі «x y» у рядку</summary>
+          <textarea id="custom" rows="6"></textarea>
+          <div>
+            <button id="apply">Застосувати</button>
+            <span id="err" role="alert"></span>
+          </div>
+        </details>
+      </div>
+    </main>
+    <script src="js/data.js"></script>
+    <script src="js/math.js"></script>
+    <script src="js/plot.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+:root {
+  --bg: #f6f7f9;
+  --ink: #1c2733;
+  --mute: #5b6573;
+  --line: #d5dbe3;
+  --blue: #1f5fbf;
+  --orange: #d9480f;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    16px/1.5 system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+header {
+  padding: 20px 4% 4px;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+}
+header p {
+  margin: 2px 0 0;
+  color: var(--mute);
+}
+h2 {
+  font-size: 1.05rem;
+  margin: 22px 0 8px;
+}
+main {
+  padding: 8px 4% 40px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin: 12px 0;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+.seg button {
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+}
+.seg button:last-child {
+  border-right: 0;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+button,
+select {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+button.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #8bb4ee;
+  outline-offset: 1px;
+}
+.stage {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: clamp(280px, 56vh, 480px);
+  touch-action: pan-y;
+}
+.short canvas {
+  height: clamp(180px, 30vh, 260px);
+}
+.tip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 9px;
+  border-radius: 6px;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 2;
+}
+#status {
+  min-height: 1.5em;
+  color: var(--mute);
+  margin: 8px 0 0;
+}
+.tw {
+  overflow-x: auto;
+}
+table {
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 14px;
+  min-width: 640px;
+  width: 100%;
+}
+th,
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+th:first-child,
+td:first-child,
+th:nth-child(2),
+td:nth-child(2) {
+  text-align: left;
+}
+tr.cur td {
+  background: #eef4fd;
+  font-weight: 600;
+}
+details {
+  margin-top: 24px;
+}
+summary {
+  cursor: pointer;
+}
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: 8px 0;
+  font:
+    14px/1.4 ui-monospace,
+    Consolas,
+    monospace;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+#err {
+  color: #c92a2a;
+}
+
+@media (min-width: 900px) {
+  header {
+    padding-inline: 12%;
+  }
+  main {
+    padding-inline: 12%;
+  }
+}
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-top: 12px;
+}
+.tabs button {
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  background: #eceff3;
+  color: var(--mute);
+  margin-bottom: -1px;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid var(--bg);
+}
+[hidden] {
+  display: none !important;
+}
